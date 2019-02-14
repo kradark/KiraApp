@@ -9,14 +9,40 @@
     $sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
     $sender_replyToken = $json_obj->events[0]->replyToken; //取得訊息的replyToken
   
-    if($sender_txt == "貼圖") {
+    if($sender_txt == "1") {
 	      $response = array (
 		        "replyToken" => $sender_replyToken,
 		        "messages" => array (
 		        array (
-			          "type" => "sticker",
-			          "packageId" => "1",
-			          "stickerId" => "1"
+			         {
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "actions": [
+      {
+        "type": "message",
+        "label": "hello",
+        "text": "good"
+      },
+      {
+        "type": "uri",
+        "label": "goto uri",
+        "uri": "http://kira.nctu.me/"
+      },
+      {
+        "type": "postback",
+        "label": "feedback",
+        "text": "back",
+        "data": "feedata"
+      },
+      null
+    ],
+    "thumbnailImageUrl": "https://www.google.com/logos/doodles/2019/valentines-day-2019-4848332248711168-s.png",
+    "title": "hello",
+    "text": "Ok?"
+  }
+}
 		        )
 		    )
 	    );
