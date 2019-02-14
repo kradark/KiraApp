@@ -9,37 +9,34 @@
   	$sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
   	$sender_replyToken = $json_obj->events[0]->replyToken; //取得訊息的replyToken
   	$msg_json = '{
-		"type": "template",
-		"altText": "this is a carousel template",
-		"template": {
-		  "type": "carousel",
-		  "actions": [],
-		  "columns": [
-			{
-			  "title": "標題",
-			  "text": "文字",
-			  "actions": [
-				{
-				  "type": "message",
-				  "label": "動作 1",
-				  "text": "動作 1"
-				}
-			  ]
-			},
-			{
-			  "title": "標題",
-			  "text": "文字",
-			  "actions": [
-				{
-				  "type": "uri",
-				  "label": "動作 1",
-				  "uri": "https://tw.yahoo.com/"
-				}
-			  ]
-			}
-		  ]
-		}
-	  }';
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "actions": [
+      {
+        "type": "message",
+        "label": "hello",
+        "text": "good"
+      },
+      {
+        "type": "uri",
+        "label": "goto uri",
+        "uri": "http://kira.nctu.me/"
+      },
+      {
+        "type": "postback",
+        "label": "feedback",
+        "text": "back",
+        "data": "feedata"
+      },
+      null
+    ],
+    "thumbnailImageUrl": "https://www.google.com/logos/doodles/2019/valentines-day-2019-4848332248711168-s.png",
+    "title": "hello",
+    "text": "Ok?"
+  }
+}';
   	$response = array (
 		"replyToken" => $sender_replyToken,
 		"messages" => array (
