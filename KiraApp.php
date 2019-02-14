@@ -16,31 +16,35 @@
 				"type" => "template",
 				"altText" => "this is a buttons template",
 				"template" => array (
-					"type" => "buttons",
-					"thumbnailImageUrl" => "https://www.w3schools.com/css/paris.jpg",
-					"title" => "Menu",
-					"text" => "Please select",
-					"actions" => array (
-						array (
-							"type" => "postback",
-							"label" => "Buy",
-							"data" => "action=buy&itemid=123"
-						),
-						array (
-							"type" => "message",
-							"label" => "Return",
-							"text" => "This is text"
-						),
-						array (
-							"type" => "datetimepicker",
-							"label" => "Select date",
-							"data" => "storeId=12345",
-							"mode" => "datetime",
-							"initial" => "2017-12-25t00:00",
-							"max" => "2018-01-24t23:59",
-							"min" => "2017-12-25t00:00"
-						)
-					)
+					{
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "actions": [
+      {
+        "type": "message",
+        "label": "hello",
+        "text": "good"
+      },
+      {
+        "type": "uri",
+        "label": "goto uri",
+        "uri": "http://kira.nctu.me/"
+      },
+      {
+        "type": "postback",
+        "label": "feedback",
+        "text": "back",
+        "data": "feedata"
+      },
+      null
+    ],
+    "thumbnailImageUrl": "https://www.google.com/logos/doodles/2019/valentines-day-2019-4848332248711168-s.png",
+    "title": "hello",
+    "text": "Ok?"
+  }
+}
 				)
 	  		)
 		)
