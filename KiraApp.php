@@ -1,56 +1,53 @@
 <?php
-	$json_str = file_get_contents('php://input'); //接收request的body
-	$json_obj = json_decode($json_str); //轉成json格式
+  	$json_str = file_get_contents('php://input'); //接收request的body
+  	$json_obj = json_decode($json_str); //轉成json格式
   
-	$myfile = fopen("log.txt", "w+") or die("Unable to open file!"); //設定一個log.txt來印訊息
-	fwrite($myfile, "\xEF\xBB\xBF".$json_str); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
+  	$myfile = fopen("log.txt", "w+") or die("Unable to open file!"); //設定一個log.txt來印訊息
+  	//fwrite($myfile, "\xEF\xBB\xBF".$json_str); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
   
-	$sender_userid = $json_obj->events[0]->source->userId; //取得訊息發送者的id
-	$sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
-	$sender_replyToken = $json_obj->events[0]->replyToken; //取得訊息的replyToken
-  
-	$response = array (
+  	$sender_userid = $json_obj->events[0]->source->userId; //取得訊息發送者的id
+  	$sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
+  	$sender_replyToken = $json_obj->events[0]->replyToken; //取得訊息的replyToken
+  	$msg_json = '{
+		"type": "template",
+		"altText": "this is a carousel template",
+		"template": {
+		  "type": "carousel",
+		  "actions": [],
+		  "columns": [
+			{
+			  "title": "標題",
+			  "text": "文字",
+			  "actions": [
+				{
+				  "type": "message",
+				  "label": "動作 1",
+				  "text": "動作 1"
+				}
+			  ]
+			},
+			{
+			  "title": "標題",
+			  "text": "文字",
+			  "actions": [
+				{
+				  "type": "uri",
+				  "label": "動作 1",
+				  "uri": "https://tw.yahoo.com/"
+				}
+			  ]
+			}
+		  ]
+		}
+	  }';
+  	$response = array (
 		"replyToken" => $sender_replyToken,
 		"messages" => array (
-			array (
-				"type" => "template",
-				"altText" => "this is a buttons template",
-				"template" => array (
-					{
-  "type": "template",
-  "altText": "this is a buttons template",
-  "template": {
-    "type": "buttons",
-    "actions": [
-      {
-        "type": "message",
-        "label": "hello",
-        "text": "good"
-      },
-      {
-        "type": "uri",
-        "label": "goto uri",
-        "uri": "http://kira.nctu.me/"
-      },
-      {
-        "type": "postback",
-        "label": "feedback",
-        "text": "back",
-        "data": "feedata"
-      },
-      null
-    ],
-    "thumbnailImageUrl": "https://www.google.com/logos/doodles/2019/valentines-day-2019-4848332248711168-s.png",
-    "title": "hello",
-    "text": "Ok?"
-  }
-}
-				)
-	  		)
+			json_decode($msg_json)
 		)
   	);
 			
-  	//fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
+  	fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
   	$header[] = "Content-Type: application/json";
     $header[] = "Authorization: Bearer 58tGd62pBsrYGL7qy1kx+LJCG8W/SheF6lG0CsIJuP0Rerj/i6md02bTC7ipkRtCC9epuOdT1LVE+gtfk0QD74eA6qJ6nfk9A4UeS8alVgrFkL+2Ww7ZcWzgcFN90KuXkLJ9n6iXKEmFIGPItm4iBwdB04t89/1O/w1cDnyilFU=";
   	$ch = curl_init("https://api.line.me/v2/bot/message/reply");
