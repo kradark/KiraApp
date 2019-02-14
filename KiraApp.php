@@ -10,35 +10,46 @@
   	$sender_replyToken = $json_obj->events[0]->replyToken; //取得訊息的replyToken
   	$msg_json = '{
   "type": "template",
-  "altText": "this is a buttons template",
+  "altText": "this is a carousel template",
   "template": {
-    "type": "buttons",
-    "actions": [
+    "type": "carousel",
+    "actions": [],
+    "columns": [
       {
-        "type": "message",
-        "label": "hello",
-        "text": "good"
+        "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
+        "title": "標題",
+        "text": "文字",
+        "actions": [
+          {
+            "type": "message",
+            "label": "動作 1",
+            "text": "動作 1"
+          },
+          {
+            "type": "message",
+            "label": "動作 2",
+            "text": "動作 2"
+          }
+        ]
       },
       {
-        "type": "uri",
-        "label": "goto uri",
-        "uri": "http://kira.nctu.me/"
-      },
-      {
-        "type": "postback",
-        "label": "feedback",
-        "text": "back",
-        "data": "feedata"
-      },
-      {
-        "type": "uri",
-        "label": "app",
-        "uri": "line://app/101"
+        "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
+        "title": "標題",
+        "text": "文字",
+        "actions": [
+          {
+            "type": "message",
+            "label": "動作 1",
+            "text": "動作 1"
+          },
+          {
+            "type": "message",
+            "label": "動作 2",
+            "text": "動作 2"
+          }
+        ]
       }
-    ],
-    "thumbnailImageUrl": "https://www.google.com/logos/doodles/2019/valentines-day-2019-4848332248711168-s.png",
-    "title": "hello",
-    "text": "Ok?"
+    ]
   }
 }';
   	$response = array (
