@@ -29,6 +29,11 @@
         "label": "feedback",
         "text": "back",
         "data": "feedata"
+      },
+      {
+        "type": "uri",
+        "label": "app",
+        "uri": "line://app/101"
       }
     ],
     "thumbnailImageUrl": "https://www.google.com/logos/doodles/2019/valentines-day-2019-4848332248711168-s.png",
