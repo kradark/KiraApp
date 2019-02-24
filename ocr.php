@@ -50,7 +50,7 @@
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header); 
     $result = json_decode(curl_exec($ch));
 
-    //fwrite($myfile, "\xEF\xBB\xBF".$result);
+    fwrite($myfile, "\xEF\xBB\xBF".$header);
 	
     //$val = $result -> responses[0] -> faceAnnotations -> detectionConfidence;
 $val = $result -> responses[0] -> error -> code;
@@ -85,3 +85,4 @@ $val = $result -> responses[0] -> error -> code;
     $result = curl_exec($ch);
     curl_close($ch);
 ?>
+
