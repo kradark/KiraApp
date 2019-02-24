@@ -68,7 +68,7 @@ $result1[] = curl_exec($ch)
     //fwrite($myfile, "aaaaa");
     
     */
- $ans_txt = "saved"
+ $ans_txt = "saved";
     $response = array (
         "replyToken" => $sender_replyToken,
         "messages" => array (
