@@ -30,7 +30,7 @@
             array (
                 "image" => array (
                     "source" => array (
-                        "imageUri" => "http://159.65.4.103//cht20190214//kira//".$imageId.".jpeg"
+                        "imageUri" => "http://159.65.4.103/cht20190214/kira//".$imageId.".jpeg"
                     )
                 ),
                 "features" => array (
@@ -53,7 +53,7 @@
     //fwrite($myfile, "\xEF\xBB\xBF".$result);
 	
     $result_ary = explode("\n",$result -> responses[0] -> faceAnnotations -> detectionConfidence);
-    fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> fullTextAnnotation -> text));
+    fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations -> detectionConfidence));
 
     $ans_txt = "";
     foreach ($result_ary as $val) {
@@ -67,8 +67,8 @@
         "messages" => array (
             array (
                 "type" => "text",
-                //"text" => $ans_txt
-            "text" => $result -> responses[0] -> fullTextAnnotation -> text
+                "text" => $ans_txt
+            //"text" => $result -> responses[0] -> fullTextAnnotation -> text
             )
         )
     );
