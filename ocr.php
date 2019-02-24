@@ -35,8 +35,7 @@
                 ),
                 "features" => array (
                     array (
-                        "type" => "TEXT_DETECTION",
-                        "maxResults" => 1
+                        "type" => "FACE_DETECTION"
                     )
                 )
             )
@@ -50,15 +49,15 @@
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header); 
     $result = json_decode(curl_exec($ch));
 
-    fwrite($myfile, "\xEF\xBB\xBF".$result);
+    //fwrite($myfile, "\xEF\xBB\xBF".$result);
 	
-    $result_ary = explode("\n",$result -> responses[0] -> fullTextAnnotation -> text);
+    $result_ary = explode("\n",$result -> responses[0] -> faceAnnotations -> detectionConfidence);
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> fullTextAnnotation -> text));
 
-    $ans_txt = "這張發票沒用了，你又製造了一張垃圾";
+    $ans_txt = "";
     foreach ($result_ary as $val) {
-        if($val == "MB-76164441"){
-          $ans_txt = "恭喜您中獎啦，快分紅!!";
+        if($val > 0.9 ){
+          $ans_txt = "偵測到人臉，存檔!!";
         }
     }
     //fwrite($myfile, "aaaaa");
