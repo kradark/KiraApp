@@ -35,7 +35,7 @@
                 ),
                 "features" => array (
                     array (
-                        "type" => "FACE_DETECTION",
+                        "type" => "TEXT_DETECTION",
                         "maxResults" => 1
                     )
                 )
