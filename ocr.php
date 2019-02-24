@@ -1,4 +1,5 @@
 <?php
+    //use Google\Cloud\Vision\V1\ImageAnnotatorClient;
     $json_str = file_get_contents('php://input'); //接收request的body
     $json_obj = json_decode($json_str); //轉成json格式
   
@@ -47,8 +48,11 @@
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);                                                                                                   
-    $result = json_decode(curl_exec($ch));
 
+	fwrite($myfile, "\xEF\xBB\xBF".$ch);
+
+    $result = json_decode(curl_exec($ch));
+	
     $result_ary = explode("\n",$result -> responses[0] -> fullTextAnnotation -> text);
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> fullTextAnnotation -> text));
 
