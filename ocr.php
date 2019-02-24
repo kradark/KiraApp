@@ -47,16 +47,16 @@
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-    curl_setopt($ch, CURLOPT_HTTPHEADER, "Content-Type: application/json"); 
+    curl_setopt($ch, CURLOPT_HTTPHEADER, "Content-Type:application/json"); 
     $result = json_decode(curl_exec($ch));
 
     //fwrite($myfile, "\xEF\xBB\xBF".$header);
 	
-    //$val = $result -> responses[0] -> faceAnnotations -> detectionConfidence;
-$val = $result -> responses[0] -> error -> code;
+  $val = $result -> responses[0] -> faceAnnotations -> detectionConfidence;
+//$val = $result -> responses[0] -> error -> code;
     fwrite($myfile, "\xEF\xBB\xBF".$val);
 
-    $ans_txt = "error";
+    $ans_txt = "error".$val;
     if($val > 0.9 ){
           $ans_txt = "偵測到人臉，存檔!!";    
     }
