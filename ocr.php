@@ -47,10 +47,10 @@
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $header); 
+    curl_setopt($ch, CURLOPT_HTTPHEADER, "Content-Type: application/json"); 
     $result = json_decode(curl_exec($ch));
 
-    fwrite($myfile, "\xEF\xBB\xBF".$header);
+    //fwrite($myfile, "\xEF\xBB\xBF".$header);
 	
     //$val = $result -> responses[0] -> faceAnnotations -> detectionConfidence;
 $val = $result -> responses[0] -> error -> code;
