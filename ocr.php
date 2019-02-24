@@ -24,6 +24,7 @@
     fwrite($imagefile, $json_content); 
     fclose($imagefile); //將圖片存在自己server上
 			
+/*
     $header[] = "Content-Type: application/json";
     $post_data = array (
         "requests" => array (
@@ -65,6 +66,9 @@ $result1[] = curl_exec($ch)
     }
 
     //fwrite($myfile, "aaaaa");
+    
+    */
+ $ans_txt = "saved"
     $response = array (
         "replyToken" => $sender_replyToken,
         "messages" => array (
@@ -77,6 +81,9 @@ $result1[] = curl_exec($ch)
     );
   
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
+    
+    
+
     $header[] = "Content-Type: application/json";
     $header[] = "Authorization: Bearer 58tGd62pBsrYGL7qy1kx+LJCG8W/SheF6lG0CsIJuP0Rerj/i6md02bTC7ipkRtCC9epuOdT1LVE+gtfk0QD74eA6qJ6nfk9A4UeS8alVgrFkL+2Ww7ZcWzgcFN90KuXkLJ9n6iXKEmFIGPItm4iBwdB04t89/1O/w1cDnyilFU=
 ";
