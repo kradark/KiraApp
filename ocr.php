@@ -48,7 +48,10 @@
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
     curl_setopt($ch, CURLOPT_HTTPHEADER, "Content-Type:application/json"); 
-    $result = json_decode(curl_exec($ch));
+
+$result1 = curl_exec($ch)
+    fwrite($myfile, "\xEF\xBB\xBF".$result1);	
+    $result = json_decode($result1);
 
     //fwrite($myfile, "\xEF\xBB\xBF".$header);
 	
