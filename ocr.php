@@ -30,7 +30,7 @@
             array (
                 "image" => array (
                     "source" => array (
-                        "imageUri" => "http://159.65.4.103/cht20190214/kira/".$imageId.".jpeg"
+                        "imageUri" => "http://159.65.4.103//cht20190214//kira//".$imageId.".jpeg"
                     )
                 ),
                 "features" => array (
@@ -43,6 +43,7 @@
     );
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($post_data));
     $ch = curl_init('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBJH3w6aTjoIBYhCh8GiI5byZ0Z-Q88cfg');                                                                      
+//https://vision.googleapis.com/v1/images:annotate?key=YOUR_API_KEY
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
