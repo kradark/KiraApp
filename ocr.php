@@ -49,8 +49,8 @@
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header); 
 
-$result1 = curl_exec($ch)
-    fwrite($myfile, "\xEF\xBB\xBF".$result1);	
+$result1[] = curl_exec($ch)
+    fwrite($myfile, "\xEF\xBB\xBF".$result1[0]);	
     $result = json_decode($result1);
 
     //fwrite($myfile, "\xEF\xBB\xBF".$header);
