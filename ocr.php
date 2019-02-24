@@ -47,11 +47,10 @@
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);                                                                                                   
-
-	fwrite($myfile, "\xEF\xBB\xBF".$ch);
-
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header); 
     $result = json_decode(curl_exec($ch));
+
+    fwrite($myfile, "\xEF\xBB\xBF".$result);
 	
     $result_ary = explode("\n",$result -> responses[0] -> fullTextAnnotation -> text);
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> fullTextAnnotation -> text));
