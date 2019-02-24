@@ -56,7 +56,7 @@
 $val = $result -> responses[0] -> error -> code;
     fwrite($myfile, "\xEF\xBB\xBF".$val);
 
-    $ans_txt = "";
+    $ans_txt = "error";
     if($val > 0.9 ){
           $ans_txt = "偵測到人臉，存檔!!";    
     }
