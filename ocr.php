@@ -52,7 +52,8 @@
 
     //fwrite($myfile, "\xEF\xBB\xBF".$result);
 	
-    $val = $result -> responses[0] -> faceAnnotations -> detectionConfidence;
+    //$val = $result -> responses[0] -> faceAnnotations -> detectionConfidence;
+$val = $result -> responses[0] -> error -> code;
     fwrite($myfile, "\xEF\xBB\xBF".$val);
 
     $ans_txt = "";
