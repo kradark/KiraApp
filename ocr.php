@@ -50,17 +50,16 @@
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header); 
     $result = json_decode(curl_exec($ch));
 
-    //fwrite($myfile, "\xEF\xBB\xBF".$result);
+    fwrite($myfile, "\xEF\xBB\xBF".$result);
 	
-    $result_ary = explode("\n",$result -> responses[0] -> faceAnnotations -> detectionConfidence);
-    fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations -> detectionConfidence));
+    $val = $result -> responses[0] -> faceAnnotations -> detectionConfidence;
+    fwrite($myfile, "\xEF\xBB\xBF".$val);
 
     $ans_txt = "";
-    foreach ($result_ary as $val) {
-        if($val > 0.9 ){
-          $ans_txt = "偵測到人臉，存檔!!";
-        }
+    if($val > 0.9 ){
+          $ans_txt = "偵測到人臉，存檔!!";    
     }
+
     //fwrite($myfile, "aaaaa");
     $response = array (
         "replyToken" => $sender_replyToken,
