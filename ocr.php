@@ -58,7 +58,7 @@
 	}
 	if (is_string($val)) {		
 		//$ans_txt = substr($val, 2, 1);		
-		$ans_txt = $val;
+		$ans_txt = "[".$val."]";
 	}
 	//$val = (float)$val;
         //if($val > 0.95){
