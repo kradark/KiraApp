@@ -51,7 +51,7 @@
     $val = explode("\n",$result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence));
 
-    $ans_txt = "這張發票沒用了，你又製造了一張垃圾";
+    //$ans_txt = "這張發票沒用了，你又製造了一張垃圾";
     $ratio = floatval($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
     if( $ratio > 0.8 ) {
 			$ans_txt = "face found:".$val;
@@ -65,7 +65,7 @@
 		//$ans_txt = "[".$val."]";
 		$ratio = floatval($val);
 		if( $ratio > 0.8 ) {
-			$ans_txt = "face found:".$val;
+			$ans_txt = "face found! sender:".$sender_userid;
 		}
 	}
 	//$val = (float)$val;
