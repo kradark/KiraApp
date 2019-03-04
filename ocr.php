@@ -59,7 +59,7 @@
 	if (is_string($val)) {		
 		//$ans_txt = substr($val, 2, 1);		
 		//$ans_txt = "[".$val."]";
-		$ratio = (float)$val;
+		$ratio = floatval($val);
 		if( $ratio > 0.8 ) {
 			$ans_txt = "face found:".$val;
 		}
