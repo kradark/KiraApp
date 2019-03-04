@@ -54,7 +54,7 @@
     //$ans_txt = "這張發票沒用了，你又製造了一張垃圾";
     $ratio = floatval($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
     if( $ratio > 0.8 ) {
-			$ans_txt = "face found:".$sender_userid;
+			$ans_txt = "@hua face found:".$sender_userid;
     }
     //foreach ($result_ary as $val) {
 	if (is_float($val)) {
