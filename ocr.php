@@ -22,16 +22,16 @@
     curl_close($ch);
     $imagefile = fopen($imageId.".jpeg", "w+") or die("Unable to open file!"); //取得圖片
     fwrite($imagefile, $json_content); 
-    fclose($imagefile); //將圖片存在自己server上
-			
-/*
+    fclose($imagefile); //將圖片存在自己server上			
+
     $header[] = "Content-Type: application/json";
     $post_data = array (
         "requests" => array (
             array (
                 "image" => array (
                     "source" => array (
-                        "imageUri" => "http://159.65.4.103/cht20190214/kira//".$imageId.".jpeg"
+                        //"imageUri" => "http://159.65.4.103/cht20190214/kira//".$imageId.".jpeg"
+			"imageUri" => '.$url.'
                     )
                 ),
                 "features" => array (
@@ -50,39 +50,35 @@
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header); 
 
-$result1[] = curl_exec($ch)
-    fwrite($myfile, "\xEF\xBB\xBF".$result1[0]);	
-    $result = json_decode($result1);
 
-    //fwrite($myfile, "\xEF\xBB\xBF".$header);
-	
-  $val = $result -> responses[0] -> faceAnnotations -> detectionConfidence;
-//$val = $result -> responses[0] -> error -> code;
-    fwrite($myfile, "\xEF\xBB\xBF".$val);
+    $result = json_decode(curl_exec($ch));
+    $result_ary = explode("\n",$result -> responses[0] -> faceAnnotations -> detectionConfidence);
+    fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] --> faceAnnotations -> detectionConfidence));
+    $ans_txt = "nobody";
 
-    $ans_txt = "error".$val;
-    if($val > 0.9 ){
-          $ans_txt = "偵測到人臉，存檔!!";    
+  //$val = $result -> responses[0] -> faceAnnotations -> detectionConfidence;
+  //$val = $result -> responses[0] -> error -> code;
+
+    foreach ($result_ary as $val) {
+        if($val > 0.9){
+          $ans_txt = "people found!";
+        }
     }
 
-    //fwrite($myfile, "aaaaa");
-    
-    */
- //$ans_txt = "saved";
+    fwrite($myfile, "\xEF\xBB\xBF".$val);
+ 
     $response = array (
         "replyToken" => $sender_replyToken,
         "messages" => array (
             array (
                 "type" => "text",
-                "text" => "saved"
+                "text" => $val
             //"text" => $result -> responses[0] -> fullTextAnnotation -> text
             )
         )
     );
   
-    fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
-    
-    
+    fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式      
 
     $header[] = "Content-Type: application/json";
     $header[] = "Authorization: Bearer 58tGd62pBsrYGL7qy1kx+LJCG8W/SheF6lG0CsIJuP0Rerj/i6md02bTC7ipkRtCC9epuOdT1LVE+gtfk0QD74eA6qJ6nfk9A4UeS8alVgrFkL+2Ww7ZcWzgcFN90KuXkLJ9n6iXKEmFIGPItm4iBwdB04t89/1O/w1cDnyilFU=
