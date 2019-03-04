@@ -57,7 +57,7 @@
 		 $ans_txt = "is_float可以";
 	}
 	if (is_string($val)) {		
-		 $ans_txt = substr($val, 2, 2);		
+		 $ans_txt = substr($val, 2, 1);		
 	}
 	//$val = (float)$val;
         //if($val > 0.95){
