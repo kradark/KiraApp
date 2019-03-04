@@ -48,11 +48,12 @@
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);                                                                                                   
     $result = json_decode(curl_exec($ch));
 
-    $result_ary = explode("\n",$result -> responses[0] -> faceAnnotations -> detectionConfidence);
-    //fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations -> detectionConfidence));
+    //$result_ary = explode("\n",$result -> responses[0] -> faceAnnotations -> detectionConfidence);
+    $val = explode("\n",$result -> responses[0] -> faceAnnotations -> detectionConfidence);
+    fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations -> detectionConfidence));
 
     $ans_txt = "這張發票沒用了，你又製造了一張垃圾";
-    foreach ($result_ary as $val) {
+    //foreach ($result_ary as $val) {
 	if (is_float($val)) {
 		 $ans_txt = "is_float可以";
 	}
@@ -65,7 +66,7 @@
         //    $ans_txt = "恭喜您中獎啦，快分紅!!";
         //}
 	//$ans_txt = $val;
-    }
+    //}
     //fwrite($myfile, "aaaaa");
     $response = array (
         "replyToken" => $sender_replyToken,
