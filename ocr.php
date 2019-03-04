@@ -53,10 +53,16 @@
 
     $ans_txt = "這張發票沒用了，你又製造了一張垃圾";
     foreach ($result_ary as $val) {
-	$val = (float)$val;
-        if($val > 0.95){
-            $ans_txt = "恭喜您中獎啦，快分紅!!";
-        }
+	if (is_float($val)) {
+		 $ans_txt = "is_float可以";
+	}
+	if (is_string($val)) {
+		 $ans_txt = "is_string可以";
+	}
+	//$val = (float)$val;
+        //if($val > 0.95){
+        //    $ans_txt = "恭喜您中獎啦，快分紅!!";
+        //}
 	//$ans_txt = $val;
     }
     //fwrite($myfile, "aaaaa");
