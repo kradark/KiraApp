@@ -52,6 +52,10 @@
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence));
 
     $ans_txt = "這張發票沒用了，你又製造了一張垃圾";
+    $ratio = floatval($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
+    if( $ratio > 0.8 ) {
+			$ans_txt = "face found:".$val;
+    }
     //foreach ($result_ary as $val) {
 	if (is_float($val)) {
 		 $ans_txt = "is_float可以";
