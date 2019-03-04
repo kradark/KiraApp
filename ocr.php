@@ -33,8 +33,8 @@
                 ),
                 "features" => array (
                     array (
-                        "type" => "TEXT_DETECTION",
-                        "maxResults" => 1
+                        "type" => "FACE_DETECTION",
+                        "maxResults" => 10
                     )
                 )
             )
@@ -48,12 +48,12 @@
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);                                                                                                   
     $result = json_decode(curl_exec($ch));
 
-    $result_ary = explode("\n",$result -> responses[0] -> fullTextAnnotation -> text);
-    //fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> fullTextAnnotation -> text));
+    $result_ary = explode("\n",$result -> responses[0] -> faceAnnotations -> detectionConfidence);
+    //fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations -> detectionConfidence));
 
     $ans_txt = "這張發票沒用了，你又製造了一張垃圾";
     foreach ($result_ary as $val) {
-        if($val == "MB-76164441"){
+        if($val > "0.95"){
           $ans_txt = "恭喜您中獎啦，快分紅!!";
         }
     }
@@ -63,8 +63,8 @@
         "messages" => array (
             array (
                 "type" => "text",
-            //    "text" => $ans_txt
-            "text" => $result -> responses[0] -> fullTextAnnotation -> text
+                "text" => $ans_txt
+            //"text" => $result -> responses[0] -> fullTextAnnotation -> text
             )
         )
     );
