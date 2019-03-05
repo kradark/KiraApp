@@ -36,7 +36,15 @@
                         "type" => "PRODUCT_SEARCH"
                     )
                 )
-		"imageContext" =>    
+		"imageContext" => array (
+                    "productSearchParams" => array (
+                        "productSet" => "projects/visual-search-176510/locations/us-west1/products/",
+			"productCategories" => array (
+				"homegoods"
+			),
+			"filter" => "style = womens"
+                    )
+                )  
             )
         )
     );
