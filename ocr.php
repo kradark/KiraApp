@@ -89,14 +89,16 @@
 //		"previewImageUrl" => "https://159.65.4.103/cht20190214/kira/9460301445472.jpeg"
 		    
     "type": "image",
-    "originalContentUrl": "https://ithelp.ithome.com.tw/storage/image/ir-article-9th.png",
-    "previewImageUrl": "https://ithelp.ithome.com.tw/storage/image/ir-article-9th.png"
+    "originalContentUrl": "https://159.65.4.103/cht20190214/kira/".$imageId.".jpeg",
+    "previewImageUrl": "https://159.65.4.103/cht20190214/kira/".$imageId.".jpeg"
 		    
                 //"type" => "text",
                 //"text" => $ans_txt
             //"text" => $result -> responses[0] -> fullTextAnnotation -> text
             )
-        )
+        )    
+	
+    );
     );
   
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
