@@ -55,7 +55,10 @@
     $ans_txt1 = "";
     if( $ratio > 0.8 ) {			
 	    		$ans_txt = "face found:".$sender_userid;
-	    		if( $sender_userid == "U45a340b673bf1e9ade8845af815891a7" ) {
+	    		if( $sender_userid == "U45a340b673bf1e9ade8845af815891a7" ) { //hua
+				$ans_txt1 = "face pic sent by ".$sender_userid.",then mention all!";
+			}
+	    		if( $sender_userid == "U45a340b673bf1e" ) { //夏樹大
 				$ans_txt1 = "face pic sent by ".$sender_userid.",then mention all!";
 			}
     }
