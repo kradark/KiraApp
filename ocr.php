@@ -53,6 +53,7 @@
 
     //$ans_txt = "這張發票沒用了，你又製造了一張垃圾";
     $ratio = floatval($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
+    $ans_txt1 = "";
     if( $ratio > 0.8 ) {			
 	    		$ans_txt1 = "@hua face found:".$sender_userid;
 	    		if( $sender_userid == "U45a340b673bf1e9ade8845af815891a7" ) {
