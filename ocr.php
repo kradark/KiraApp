@@ -55,7 +55,7 @@
     $ratio = floatval($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
     $ans_txt1 = "";
     if( $ratio > 0.8 ) {			
-	    		$ans_txt1 = "@hua face found:".$sender_userid;
+	    		$ans_txt = "@hua face found:".$sender_userid;
 	    		if( $sender_userid == "U45a340b673bf1e9ade8845af815891a7" ) {
 				//$ans_txt1 = "@hua face found:".$sender_userid;
 			}
@@ -80,8 +80,8 @@
     //}
     //fwrite($myfile, "aaaaa");
     $response = array (
-       // "replyToken" => $sender_replyToken,
-	"to":  $sender_userid,	    
+        "replyToken" => $sender_replyToken,
+	//"to":  $sender_userid,	    
         "messages" => array (
             array (
                 "type" => "text",
