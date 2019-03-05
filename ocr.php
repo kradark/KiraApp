@@ -84,9 +84,14 @@
 	"to" => "U5ac8bed58b53fa1834130d8fafcbc2bc",	    
         "messages" => array (
             array (
-		"type" => "image",
-                "originalContentUrl" => "https://159.65.4.103/cht20190214/kira/9460295536836.jpeg",
-		"previewImageUrl" => "https://159.65.4.103/cht20190214/kira/9460301445472.jpeg"
+//		"type" => "image",
+//              "originalContentUrl" => "https://159.65.4.103/cht20190214/kira/9460295536836.jpeg",
+//		"previewImageUrl" => "https://159.65.4.103/cht20190214/kira/9460301445472.jpeg"
+		    
+    "type": "image",
+    "originalContentUrl": "https://ithelp.ithome.com.tw/storage/image/ir-article-9th.png",
+    "previewImageUrl": "https://ithelp.ithome.com.tw/storage/image/ir-article-9th.png"
+		    
                 //"type" => "text",
                 //"text" => $ans_txt
             //"text" => $result -> responses[0] -> fullTextAnnotation -> text
