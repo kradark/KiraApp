@@ -33,49 +33,33 @@
                 ),
                 "features" => array (
                     array (
-                        "type" => "FACE_DETECTION"
+                        "type" => "PRODUCT_SEARCH"
                     )
                 )
             )
         )
     );
+
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($post_data));
     $ch = curl_init('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBJH3w6aTjoIBYhCh8GiI5byZ0Z-Q88cfg');                                                                      
+//https://alpha-vision.googleapis.com/v1/images:annotate
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);                                                                                                   
     $result = json_decode(curl_exec($ch));
 
-    $val = explode("\n",$result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
-    fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence));
-
-    $ratio = floatval($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
-    $ans_txt = "";
-    $ans_txt1 = "";
-    if( $ratio > 0.8 ) {			
-	    		$ans_txt = "face found:".$sender_userid;
-	    		if( $sender_userid == "U45a340b673bf1e9ade8845af815891a7" ) { //hua
-				$ans_txt1 = "face pic sent by ".$sender_userid.",then mention all!";
-			}
-	    		if( $sender_userid == "U45a340b673bf1e" ) { //夏樹大
-				$ans_txt1 = "face pic sent by ".$sender_userid.",then mention all!";
-			}
-    }
-   
+    //$val = explode("\n",$result -> responses[0] -> productSearchResults[0] -> results[0] -> product -> name);
+    $name = $result -> responses[0] -> productSearchResults[0] -> results[0] -> product -> name;
+    fwrite($myfile, "\xEF\xBB\xBF".json_encode($name));
+  
     $response = array (
         //"replyToken" => $sender_replyToken,
 	"to" => "U5ac8bed58b53fa1834130d8fafcbc2bc", // mention wlyz	    
         "messages" => array (
             array (
-   	"type" => "image",
-              //"originalContentUrl" => "http://159.65.4.103/cht20190214/kira/".$imageId.".jpeg",
-		"originalContentUrl" => "https://4.bp.blogspot.com/-DQiXzuDtBBE/XH4xCzKvJvI/AAAAAAAAAME/LVfVmFAP7hkvnAWiPzoR-pdHPN4lBq65ACLcBGAs/s1600/53283491_2565996610303188_1695990050120007680_n.png",
-		"previewImageUrl" => "https://4.bp.blogspot.com/-DQiXzuDtBBE/XH4xCzKvJvI/AAAAAAAAAME/LVfVmFAP7hkvnAWiPzoR-pdHPN4lBq65ACLcBGAs/s1600/53283491_2565996610303188_1695990050120007680_n.png"    
-	    
-   //             "type" => "text",
-     //           "text" => $ans_txt.$ans_txt1
-            //"text" => $result -> responses[0] -> fullTextAnnotation -> text
+                   "type" => "text",
+                  "text" => $name            
             )
         )    
     );
