@@ -85,7 +85,8 @@
         "messages" => array (
             array (
 		"type" => "image",
-                "originalContentUrl" => "https://159.65.4.103/cht20190214/kira/".$imageId.".jpeg"
+                "originalContentUrl" => "https://159.65.4.103/cht20190214/kira/9460295536836.jpeg",
+		"previewImageUrl" => "https://159.65.4.103/cht20190214/kira/9460301445472.jpeg"
                 //"type" => "text",
                 //"text" => $ans_txt
             //"text" => $result -> responses[0] -> fullTextAnnotation -> text
