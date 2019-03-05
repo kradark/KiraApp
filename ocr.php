@@ -66,8 +66,9 @@
         "messages" => array (
             array (
    	"type" => "image",
-              "originalContentUrl" => "http://159.65.4.103/cht20190214/kira/".$imageId.".jpeg",
-		"previewImageUrl" => "http://159.65.4.103/cht20190214/kira/9460574844947.jpeg"    
+              //"originalContentUrl" => "http://159.65.4.103/cht20190214/kira/".$imageId.".jpeg",
+		"originalContentUrl" => "https://4.bp.blogspot.com/-DQiXzuDtBBE/XH4xCzKvJvI/AAAAAAAAAME/LVfVmFAP7hkvnAWiPzoR-pdHPN4lBq65ACLcBGAs/s1600/53283491_2565996610303188_1695990050120007680_n.png",
+		"previewImageUrl" => "https://4.bp.blogspot.com/-DQiXzuDtBBE/XH4xCzKvJvI/AAAAAAAAAME/LVfVmFAP7hkvnAWiPzoR-pdHPN4lBq65ACLcBGAs/s1600/53283491_2565996610303188_1695990050120007680_n.png"    
 	    
    //             "type" => "text",
      //           "text" => $ans_txt.$ans_txt1
