@@ -51,8 +51,8 @@
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence));
 
     $ratio = floatval($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
-    $ans_txt = ""
-    $ans_txt1 = ""
+    $ans_txt = "";
+    $ans_txt1 = "";
     if( $ratio > 0.8 ) {			
 	    		$ans_txt = "face found:".$sender_userid;
 	    		if( $sender_userid == "U45a340b673bf1e9ade8845af815891a7" ) {
@@ -65,17 +65,15 @@
 	"to" => "U5ac8bed58b53fa1834130d8fafcbc2bc", // mention wlyz	    
         "messages" => array (
             array (
-//		"type" => "image",
-//              "originalContentUrl" => "https://159.65.4.103/cht20190214/kira/9460295536836.jpeg",
-//		"previewImageUrl" => "https://159.65.4.103/cht20190214/kira/9460301445472.jpeg"    
+   	"type" => "image",
+              "originalContentUrl" => "https://159.65.4.103/cht20190214/kira/9460295536836.jpeg",
+		"previewImageUrl" => "https://159.65.4.103/cht20190214/kira/9460301445472.jpeg"    
 	    
-                "type" => "text",
-                "text" => $ans_txt.$ans_txt1
+   //             "type" => "text",
+     //           "text" => $ans_txt.$ans_txt1
             //"text" => $result -> responses[0] -> fullTextAnnotation -> text
             )
         )    
-	
-    );
     );
   
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
