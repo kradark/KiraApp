@@ -41,7 +41,7 @@
     );
 
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($post_data));
-    $ch = curl_init('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBJH3w6aTjoIBYhCh8GiI5byZ0Z-Q88cfg');                                                                      
+    $ch = curl_init('https://alpha-vision.googleapis.com/v1/images:annotate?key=AIzaSyBJH3w6aTjoIBYhCh8GiI5byZ0Z-Q88cfg');                                                                      
 //https://alpha-vision.googleapis.com/v1/images:annotate
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
