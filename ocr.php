@@ -81,7 +81,7 @@
     //fwrite($myfile, "aaaaa");
     $response = array (
         //"replyToken" => $sender_replyToken,
-	"to":  "U5ac8bed58b53fa1834130d8fafcbc2bc",	    
+	"to" => "U5ac8bed58b53fa1834130d8fafcbc2bc",	    
         "messages" => array (
             array (
                 "type" => "text",
