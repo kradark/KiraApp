@@ -84,8 +84,10 @@
 	"to" => "U5ac8bed58b53fa1834130d8fafcbc2bc",	    
         "messages" => array (
             array (
-                "type" => "text",
-                "text" => $ans_txt
+		"type" => "image",
+                "originalContentUrl" => "https://159.65.4.103/cht20190214/kira/".$imageId.".jpeg"
+                //"type" => "text",
+                //"text" => $ans_txt
             //"text" => $result -> responses[0] -> fullTextAnnotation -> text
             )
         )
