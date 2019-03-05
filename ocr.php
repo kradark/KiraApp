@@ -51,6 +51,7 @@
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence));
 
     $ratio = floatval($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
+    $ans_txt = ""
     $ans_txt1 = ""
     if( $ratio > 0.8 ) {			
 	    		$ans_txt = "face found:".$sender_userid;
