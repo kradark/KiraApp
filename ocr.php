@@ -67,7 +67,7 @@
             array (
    	"type" => "image",
               "originalContentUrl" => "https://159.65.4.103/cht20190214/kira/".$imageId.".jpeg",
-		"previewImageUrl" => "https://txmn.org/files/2014/10/dragonfly-black-and-white.jpg"    
+		"previewImageUrl" => "https://159.65.4.103/cht20190214/kira/9460574844947.jpeg"    
 	    
    //             "type" => "text",
      //           "text" => $ans_txt.$ans_txt1
