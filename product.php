@@ -36,9 +36,21 @@
                         "type" => "PRODUCT_SEARCH"
                     )
                 )
+		"imageContext" =>    
             )
         )
     );
+
+
+
+"imageContext": {
+        "productSearchParams": {
+          "productSet": "projects/project-id/locations/location-id/productSets/product-set-id",
+          "productCategories": [
+               "homegoods"
+             ],
+        "filter": "style = womens"
+        }
 
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($post_data));
     $ch = curl_init('https://alpha-vision.googleapis.com/v1/images:annotate?key=AIzaSyBJH3w6aTjoIBYhCh8GiI5byZ0Z-Q88cfg');                                                                      
