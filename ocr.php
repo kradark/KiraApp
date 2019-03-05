@@ -47,50 +47,29 @@
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);                                                                                                   
     $result = json_decode(curl_exec($ch));
 
-    //$result_ary = explode("\n",$result -> responses[0] -> faceAnnotations -> detectionConfidence);
     $val = explode("\n",$result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence));
 
-    //$ans_txt = "這張發票沒用了，你又製造了一張垃圾";
     $ratio = floatval($result -> responses[0] -> faceAnnotations[0] -> detectionConfidence);
-    $ans_txt1 = "";
+    $ans_txt1 = ""
     if( $ratio > 0.8 ) {			
-	    		$ans_txt = "@hua face found:".$sender_userid;
+	    		$ans_txt = "face found:".$sender_userid;
 	    		if( $sender_userid == "U45a340b673bf1e9ade8845af815891a7" ) {
-				//$ans_txt1 = "@hua face found:".$sender_userid;
+				$ans_txt1 = "face pic sent by ".$sender_userid.",then mention all!";
 			}
     }
-    //foreach ($result_ary as $val) {
-	if (is_float($val)) {
-		 $ans_txt = "is_float可以";
-	}
-	if (is_string($val)) {		
-		//$ans_txt = substr($val, 2, 1);		
-		//$ans_txt = "[".$val."]";
-		$ratio = floatval($val);
-		if( $ratio > 0.8 ) {
-			$ans_txt = "face found! sender:".$sender_userid;
-		}
-	}
-	//$val = (float)$val;
-        //if($val > 0.95){
-        //    $ans_txt = "恭喜您中獎啦，快分紅!!";
-        //}
-	//$ans_txt = $val;
-    //}
-    //fwrite($myfile, "aaaaa");
+   
     $response = array (
         //"replyToken" => $sender_replyToken,
-	"to" => "U5ac8bed58b53fa1834130d8fafcbc2bc",	    
+	"to" => "U5ac8bed58b53fa1834130d8fafcbc2bc", // mention wlyz	    
         "messages" => array (
             array (
 //		"type" => "image",
 //              "originalContentUrl" => "https://159.65.4.103/cht20190214/kira/9460295536836.jpeg",
-//		"previewImageUrl" => "https://159.65.4.103/cht20190214/kira/9460301445472.jpeg"
-		    
+//		"previewImageUrl" => "https://159.65.4.103/cht20190214/kira/9460301445472.jpeg"    
 	    
                 "type" => "text",
-                "text" => "face found!"
+                "text" => $ans_txt.$ans_txt1
             //"text" => $result -> responses[0] -> fullTextAnnotation -> text
             )
         )    
