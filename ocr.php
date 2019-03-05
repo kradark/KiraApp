@@ -50,8 +50,8 @@
     $result = json_decode(curl_exec($ch));
 
     //$val = explode("\n",$result -> responses[0] -> productSearchResults[0] -> results[0] -> product -> name);
-    $name = $result -> responses[0] -> productSearchResults[0] -> results[0] -> product -> name;
-    fwrite($myfile, "\xEF\xBB\xBF".json_encode($name));
+    $name = $result -> responses[0] -> productSearchResults[0] -> results[0] -> product -> displayName;
+    fwrite($myfile, "\xEF\xBB\xBF".$name);
   
     $response = array (
         //"replyToken" => $sender_replyToken,
